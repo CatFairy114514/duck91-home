@@ -19,8 +19,8 @@ export const siteConfig = {
       description:
         "面向浏览器的轻量小游戏合集。规则直观、打开即玩，适合把零碎时间变成一点小小的乐趣。",
       tags: ["小游戏", "Web", "实验作品"],
-      status: "演示中",
-      statusTone: "warm",
+      status: "已上线",
+      statusTone: "cool",
       url: "https://game.duck91.com",
       linkType: "external", // 外部/子域名用 "external"；同域名子路径用 "internal"
       visual: "game",
@@ -32,7 +32,7 @@ export const siteConfig = {
       description:
         "用于整理与分析文件体积的实用工具演示，帮助更快识别占用空间较大的内容与分布情况。",
       tags: ["实用工具", "文件分析", "PikPak"],
-      status: "演示中",
+      status: "已上线",
       statusTone: "cool",
       url: "https://pikpak.duck91.com",
       linkType: "external", // 外部/子域名用 "external"；同域名子路径用 "internal"
@@ -56,7 +56,7 @@ export const siteConfig = {
     {
       label: "GitHub",
       hint: "代码与项目记录",
-      url: "", // 例如 "https://github.com/your-name"
+      url: "https://github.com/CatFairy114514",
     },
     {
       label: "邮箱",
