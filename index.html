@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="91Duck先森の小窝：收录实用工具、实验性作品与网页小游戏的个人项目主页。"
+    />
+    <meta name="theme-color" content="#f7f8f6" />
+    <title>91Duck先森の小窝</title>
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem("duck-home-theme");
+          if (savedTheme === "light" || savedTheme === "dark") {
+            document.documentElement.dataset.theme = savedTheme;
+          }
+        } catch (_) {
+          // 无法访问存储时，继续跟随系统主题。
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#projects">跳至项目列表</a>
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="#top" aria-label="返回页面顶部">
+          <span class="brand-mark" aria-hidden="true">91</span>
+          <span data-site-name>91Duck先森の小窝</span>
+        </a>
+
+        <nav class="nav-links" aria-label="主导航">
+          <a href="#projects">项目</a>
+          <a href="#about">关于</a>
+          <a href="#contact">联系</a>
+        </nav>
+
+        <button
+          class="theme-toggle"
+          type="button"
+          aria-label="切换为深色模式"
+          aria-pressed="false"
+          title="切换为深色模式"
+        >
+          <span class="theme-icon" aria-hidden="true">☼</span>
+          <span class="theme-label">浅色</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero section" aria-labelledby="hero-title">
+        <div class="container hero-grid reveal">
+          <div class="hero-copy">
+            <p class="eyebrow" data-site-eyebrow>PERSONAL PROJECT HUB</p>
+            <h1 id="hero-title" data-site-name>91Duck先森の小窝</h1>
+            <p class="hero-tagline" data-site-tagline>
+              收录一些实用工具、实验性作品与小游戏。
+            </p>
+            <p class="hero-intro" data-site-intro>
+              一个持续生长的个人项目主站。每个独立作品都拥有清晰入口，也在这里留下简洁、可靠的第一印象。
+            </p>
+            <a class="button button-primary" href="#projects">
+              浏览项目
+              <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+
+          <div class="hero-aside" aria-label="站点内容概览">
+            <div class="hero-aside-top">
+              <span>现在</span>
+              <span class="live-dot">持续更新</span>
+            </div>
+            <p>项目、工具与灵感，在同一个干净的入口中慢慢汇聚。</p>
+            <div class="signal-lines" aria-hidden="true">
+              <i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section projects-section" id="projects" aria-labelledby="projects-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <div>
+              <p class="eyebrow">SELECTED WORK</p>
+              <h2 id="projects-title">正在收录的项目</h2>
+            </div>
+            <p>每个项目独立演进，也保留一个统一、清晰的抵达入口。</p>
+          </div>
+
+          <div class="project-grid" id="project-list" aria-live="polite"></div>
+
+          <aside class="coming-soon reveal" aria-label="更多项目即将上线">
+            <span class="coming-soon-mark" aria-hidden="true">＋</span>
+            <div>
+              <h3>更多项目，即将上线</h3>
+              <p>新的工具、实验与小作品正在整理中。</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="container about-card reveal">
+          <div class="avatar" aria-hidden="true" data-avatar-text>D</div>
+          <div class="about-copy">
+            <p class="eyebrow">ABOUT</p>
+            <h2 id="about-title" data-about-title>关于这里</h2>
+            <p data-about-description>
+              这里预留给一段简短的个人介绍：可以写下你关注的方向、正在探索的领域，或这个项目站存在的原因。
+            </p>
+            <div class="text-links" id="about-links" aria-label="个人相关链接"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <div>
+              <p class="eyebrow">CONTACT</p>
+              <h2 id="contact-title">保持联系</h2>
+            </div>
+            <p>联系方式暂时预留。填写配置后，入口会自动生效。</p>
+          </div>
+          <div class="contact-list reveal" id="contact-list" aria-label="联系方式"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© <span id="year"></span> <span data-site-name>91Duck先森の小窝</span></p>
+        <p>由个人独立维护</p>
+      </div>
+    </footer>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
+
