@@ -10,8 +10,8 @@
 - 在 `projects` 中新增一条对象即可增加项目卡片；将 `visible` 设为 `false` 可临时隐藏项目；
 - 为项目填写 `url`，并按需设置 `linkType: "external"` 或 `linkType: "internal"`；可选的 `ctaLabel` 可修改主按钮文案，`secondaryAction` 可新增第二个跳转入口（例如 GitHub 源码）；留空链接时页面会显示“链接待补充”；
 - 为项目填写 `coverImage` 与 `coverAlt` 可使用自定义封面；为项目添加 `details` 对象可启用桌面端悬停详情与移动端“查看详情”展开，标题、规则、标签和按钮文案都集中在该项目条目中；
-- 修改 `about` 内的头像字母、介绍与链接占位；
-- 在 `contacts` 中填写 `url` 后，对应社交入口会自动变为可点击链接；空链接会显示“待补充”。
+- 在 `about` 中修改个人介绍、头像文字与相关链接；
+- 在 `contacts` 中填写 GitHub、邮件或其他联系方式；空链接会显示“待补充”。
 
 ## 文件说明
 
@@ -19,6 +19,7 @@
 - `style.css`：响应式布局、主题变量与轻量动效；
 - `site.config.js`：可配置内容数据；
 - `script.js`：项目渲染、主题切换和年份更新。
+- `assets/og.png`：主站分享卡片；如需替换，需同步更新 `index.html` 中的 Open Graph 与 Twitter 图片地址、尺寸和替代文字。
 
 ## 主题行为
 

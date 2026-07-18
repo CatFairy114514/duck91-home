@@ -90,31 +90,31 @@ export const siteConfig = {
   ],
 
   about: {
-    avatarText: "D",
-    title: "关于这里",
+    avatarText: "91",
+    title: "关于我",
     description:
-      "这里预留给一段简短的个人介绍：可以写下你关注的方向、正在探索的领域，或这个项目站存在的原因。",
+      "这里是 91Duck先森的个人项目主站。我关注轻量实用的 Web 工具、可视化整理与有趣的交互实验；每个作品从小问题出发，持续打磨成简单、可靠的体验。",
     links: [
-      { label: "个人主页", url: "" },
-      { label: "作品归档", url: "" },
+      { label: "GitHub 主页", url: "https://github.com/CatFairy114514" },
+      { label: "PikPak 分析器", url: "https://pikpak.duck91.com" },
     ],
   },
 
   contacts: [
     {
       label: "GitHub",
-      hint: "代码与项目记录",
+      hint: "代码、项目更新与反馈",
       url: "https://github.com/CatFairy114514",
     },
     {
-      label: "邮箱",
-      hint: "合作与交流",
-      url: "", // 例如 "mailto:hello@example.com"
+      label: "项目反馈",
+      hint: "通过 GitHub 交流与建议",
+      url: "https://github.com/CatFairy114514/duck91-home/issues",
     },
     {
-      label: "其他平台",
-      hint: "待补充",
-      url: "",
+      label: "邮箱",
+      hint: "邮箱地址待补充",
+      url: "", // 例如 "mailto:hello@example.com"
     },
   ],
 };
