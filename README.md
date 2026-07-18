@@ -8,7 +8,7 @@
 
 - 修改 `site.name`、`site.tagline` 与 `site.intro` 可以更新站点名称和首屏文案；
 - 在 `projects` 中新增一条对象即可增加项目卡片；将 `visible` 设为 `false` 可临时隐藏项目；
-- 为项目填写 `url`，并按需设置 `linkType: "external"` 或 `linkType: "internal"`；可选的 `ctaLabel` 可将按钮改为“查看源码”等文案；留空链接时页面会显示“链接待补充”；
+- 为项目填写 `url`，并按需设置 `linkType: "external"` 或 `linkType: "internal"`；可选的 `ctaLabel` 可修改主按钮文案，`secondaryAction` 可新增第二个跳转入口（例如 GitHub 源码）；留空链接时页面会显示“链接待补充”；
 - 为项目填写 `coverImage` 与 `coverAlt` 可使用自定义封面；为项目添加 `details` 对象可启用桌面端悬停详情与移动端“查看详情”展开，标题、规则、标签和按钮文案都集中在该项目条目中；
 - 修改 `about` 内的头像字母、介绍与链接占位；
 - 在 `contacts` 中填写 `url` 后，对应社交入口会自动变为可点击链接；空链接会显示“待补充”。

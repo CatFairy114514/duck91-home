@@ -31,18 +31,19 @@ function renderSiteText() {
   document.querySelector("[data-about-description]").textContent = about.description;
 }
 
-function makeProjectAction(project) {
-  if (!isUsableUrl(project.url)) {
+function makeProjectAction(action, options = {}) {
+  const { fallbackLabel = "立即访问", modifier = "" } = options;
+  if (!isUsableUrl(action?.url)) {
     return `
       <button class="button button-disabled project-action" type="button" disabled aria-disabled="true">
         链接待补充 <span aria-hidden="true">↗</span>
       </button>`;
   }
 
-  const external = project.linkType === "external";
-  const actionLabel = project.ctaLabel || "立即访问";
+  const external = action.linkType === "external";
+  const actionLabel = action.ctaLabel || action.label || fallbackLabel;
   return `
-    <a class="button button-secondary project-action" href="${escapeHtml(project.url)}"${external ? ' target="_blank" rel="noreferrer"' : ""}>
+    <a class="button button-secondary project-action${modifier}" href="${escapeHtml(action.url)}"${external ? ' target="_blank" rel="noreferrer"' : ""}>
       ${escapeHtml(actionLabel)} <span aria-hidden="true">${external ? "↗" : "→"}</span>
       <span class="sr-only">${external ? "（在新窗口打开）" : ""}</span>
     </a>`;
@@ -87,9 +88,6 @@ function makeProjectDetails(project, index) {
   const detailId = `project-details-${index + 1}`;
   return `
     <section class="project-details" id="${detailId}" aria-label="${escapeHtml(details.title || project.name)}详情">
-      <p class="project-details-subtitle">${escapeHtml(details.subtitle || "")}</p>
-      <p class="project-details-title">${escapeHtml(details.title || project.name)}</p>
-      <p class="project-details-tagline">${escapeHtml(details.tagline || "")}</p>
       <p class="project-details-description">${escapeHtml(details.description || "")}</p>
       <ul class="project-rule-list" aria-label="${escapeHtml(details.listLabel || "项目摘要")}">
         ${(details.rules || []).map((rule) => `<li>${escapeHtml(rule)}</li>`).join("")}
@@ -120,7 +118,7 @@ function renderProjects() {
   projectList.innerHTML = projects
     .map(
       (project, index) => `
-        <article class="project-card${project.details ? " project-card-has-details" : ""} reveal"${project.details ? ' tabindex="0"' : ""} style="--card-delay: ${index * 90}ms">
+        <article class="project-card${project.details ? " project-card-has-details" : ""}${project.secondaryAction ? " project-card-has-secondary-action" : ""} reveal"${project.details ? ' tabindex="0"' : ""} style="--card-delay: ${index * 90}ms">
           ${makeProjectVisual(project, index)}
           <div class="project-body">
             <div class="project-meta">
@@ -137,6 +135,7 @@ function renderProjects() {
             <div class="project-actions">
               ${makeProjectDetailToggle(project, index)}
               ${makeProjectAction(project)}
+              ${project.secondaryAction ? makeProjectAction(project.secondaryAction, { modifier: " project-action-secondary" }) : ""}
             </div>
           </div>
         </article>`,
