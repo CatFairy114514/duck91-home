@@ -134,6 +134,8 @@ h3 { font-size: 1.45rem; }
 .project-card { display: grid; overflow: hidden; border: 1px solid var(--line); border-radius: 15px; background: var(--surface); box-shadow: var(--shadow); transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
 .project-card:hover { border-color: color-mix(in srgb, var(--accent) 42%, var(--line)); box-shadow: var(--shadow-hover); transform: translateY(-5px); }
 .project-visual { position: relative; min-height: 218px; overflow: hidden; padding: 20px; color: #f3f5ff; isolation: isolate; }
+.project-visual.has-cover { padding: 0; background: #10151d; }
+.project-cover { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .visual-game { background: #64455f; }.visual-analyzer { background: #414b6d; }
 .project-visual::before, .project-visual::after { position: absolute; z-index: -1; border-radius: 50%; content: ""; filter: blur(0); }
 .visual-game::before { width: 270px; height: 270px; right: -88px; bottom: -163px; border: 1px solid rgb(255 240 247 / 45%); box-shadow: 0 0 0 34px rgb(255 240 247 / 8%), 0 0 0 69px rgb(255 240 247 / 6%); }.visual-game::after { width: 114px; height: 114px; left: 22%; top: 42%; background: #f0a6c2; opacity: .22; }

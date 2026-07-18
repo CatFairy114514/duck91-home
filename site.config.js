@@ -23,6 +23,8 @@ export const siteConfig = {
       statusTone: "cool",
       url: "https://game.duck91.com",
       linkType: "external", // 外部/子域名用 "external"；同域名子路径用 "internal"
+      coverImage: "./assets/game-cover.png",
+      coverAlt: "雷雨中的九头蛇与持剑冒险者对峙的网页小游戏封面",
       visual: "game",
       visualLabel: "网页小游戏的封面占位图",
     },

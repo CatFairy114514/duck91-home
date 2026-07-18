@@ -48,6 +48,24 @@ function makeProjectAction(project) {
     </a>`;
 }
 
+function makeProjectVisual(project, index) {
+  if (isUsableUrl(project.coverImage)) {
+    const coverAlt = project.coverAlt || project.visualLabel || `${project.name} 封面`;
+    return `
+      <div class="project-visual has-cover">
+        <img class="project-cover" src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(coverAlt)}" loading="lazy" decoding="async">
+      </div>`;
+  }
+
+  return `
+    <div class="project-visual visual-${escapeHtml(project.visual)}" role="img" aria-label="${escapeHtml(project.visualLabel)}">
+      <div class="visual-noise" aria-hidden="true"></div>
+      <span class="visual-kicker" aria-hidden="true">PROJECT 0${index + 1}</span>
+      <div class="visual-symbol" aria-hidden="true">${project.visual === "game" ? "◇" : "↗"}</div>
+      <div class="visual-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    </div>`;
+}
+
 function renderProjects() {
   const projectList = document.querySelector("#project-list");
   const projects = siteConfig.projects.filter((project) => project.visible !== false);
@@ -56,12 +74,7 @@ function renderProjects() {
     .map(
       (project, index) => `
         <article class="project-card reveal" style="--card-delay: ${index * 90}ms">
-          <div class="project-visual visual-${escapeHtml(project.visual)}" role="img" aria-label="${escapeHtml(project.visualLabel)}">
-            <div class="visual-noise" aria-hidden="true"></div>
-            <span class="visual-kicker" aria-hidden="true">PROJECT 0${index + 1}</span>
-            <div class="visual-symbol" aria-hidden="true">${project.visual === "game" ? "◇" : "↗"}</div>
-            <div class="visual-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-          </div>
+          ${makeProjectVisual(project, index)}
           <div class="project-body">
             <div class="project-meta">
               <span class="status status-${escapeHtml(project.statusTone || "neutral")}">${escapeHtml(project.status)}</span>
