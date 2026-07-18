@@ -1,5 +1,28 @@
-/site.config.js
-  Cache-Control: no-cache
+/
+  Cache-Control: no-cache, must-revalidate
 
+/index.html
+  Cache-Control: no-cache, must-revalidate
+
+# 运行时内容：不要让 CDN 或浏览器长期保存固定文件名的配置。
+/site.config.js
+  Cache-Control: no-cache, must-revalidate
+  CDN-Cache-Control: no-store
+
+/site.config.json
+  Cache-Control: no-cache, must-revalidate
+  CDN-Cache-Control: no-store
+
+/config/*
+  Cache-Control: no-cache, must-revalidate
+  CDN-Cache-Control: no-store
+
+# 以下资源均由页面 URL 中的 v 构建版本区分，因而可以安全长期缓存。
 /script.js
-  Cache-Control: no-cache
+  Cache-Control: public, max-age=31536000, immutable
+
+/style.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

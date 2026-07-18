@@ -24,7 +24,7 @@ export const siteConfig = {
       url: "https://game.duck91.com",
       linkType: "external", // 外部/子域名用 "external"；同域名子路径用 "internal"
       ctaLabel: "进入游戏",
-      coverImage: "./assets/game-cover.png",
+      coverImage: "./assets/game-cover.png?v=20260719-01",
       coverAlt: "雷雨中的九头蛇与持剑冒险者对峙的网页小游戏封面",
       visual: "game",
       visualLabel: "九头蛇游戏的封面图",
@@ -65,7 +65,7 @@ export const siteConfig = {
         url: "https://github.com/CatFairy114514/pikpak-file-analyzer-demo",
         linkType: "external",
       },
-      coverImage: "./assets/pikpak-cover.png",
+      coverImage: "./assets/pikpak-cover.png?v=20260719-01",
       coverAlt: "PikPak 文件空间分析器的矩形树图、文件排行和隐私扫描界面",
       visual: "analyzer",
       visualLabel: "PikPak 文件空间分析器的封面图",

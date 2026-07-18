@@ -1,4 +1,7 @@
-import { siteConfig } from "./site.config.js";
+const buildVersion = document.querySelector('meta[name="site-build"]')?.content || "dev";
+const configUrl = new URL("./site.config.js", import.meta.url);
+configUrl.searchParams.set("v", buildVersion);
+const { siteConfig } = await import(configUrl.href);
 
 const THEME_KEY = "duck-home-theme";
 const root = document.documentElement;

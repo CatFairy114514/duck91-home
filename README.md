@@ -21,6 +21,14 @@
 - `script.js`：项目渲染、主题切换和年份更新。
 - `assets/og.png`：主站分享卡片；如需替换，需同步更新 `index.html` 中的 Open Graph 与 Twitter 图片地址、尺寸和替代文字。
 
+## 缓存与发布
+
+- `site.config.js` 是运行时配置：Pages 的 [`_headers`](./_headers) 将它设为 `Cache-Control: no-cache, must-revalidate`，并使用 `CDN-Cache-Control: no-store`，防止移动端长期读取固定文件名的旧配置。
+- 首页的 `site-build` 元数据是构建版本号；`script.js` 会使用它以 `site.config.js?v=版本号` 的地址加载配置。每次发布涉及配置、样式、脚本或图片的更新时，将 `20260719-01` 统一替换为新的版本号（例如 `20260720-01`）。
+- `style.css`、`script.js` 和 `assets/*` 使用一年期 `immutable` 缓存，但页面引用带有同一个 `v` 参数；更新版本号即可请求新资源，不会被旧缓存拦截。
+- Cloudflare 控制台仍需将 **Caching → Configuration → Browser Cache TTL** 设为 **Respect Existing Headers**，并确认没有 Cache Rule 对 `/site.config.js`、`/site.config.json` 或 `/config/*` 设置“Cache Everything”或固定 Browser Cache TTL。该设置优先级高于仓库中的响应头。
+- 本项目当前没有注册 Service Worker。以后若增加它，应对配置请求使用 Network First，缓存名包含构建版本号，并在 `activate` 中删除旧缓存。
+
 ## 主题行为
 
 首次访问会自动跟随系统的浅色或深色模式。点击右上角主题按钮后会保存手动选择；如需恢复跟随系统模式，可在浏览器站点数据中清除 `duck-home-theme`。
