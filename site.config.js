@@ -15,10 +15,10 @@ export const siteConfig = {
   projects: [
     {
       visible: true,
-      name: "网页小游戏",
+      name: "九头蛇游戏",
       description:
-        "面向浏览器的轻量小游戏合集。规则直观、打开即玩，适合把零碎时间变成一点小小的乐趣。",
-      tags: ["小游戏", "Web", "实验作品"],
+        "砍掉末端蛇头，面对会随次数复制分支的九头蛇。用递归规则破解无限再生的诅咒。",
+      tags: ["逻辑游戏", "递归结构", "数学游戏", "Hydra"],
       status: "已上线",
       statusTone: "cool",
       url: "https://game.duck91.com",
@@ -27,7 +27,7 @@ export const siteConfig = {
       coverImage: "./assets/game-cover.png",
       coverAlt: "雷雨中的九头蛇与持剑冒险者对峙的网页小游戏封面",
       visual: "game",
-      visualLabel: "网页小游戏的封面占位图",
+      visualLabel: "九头蛇游戏的封面图",
       // 配置 details 后，项目卡片会获得桌面端悬停详情与移动端手动展开能力。
       details: {
         title: "九头蛇游戏",
