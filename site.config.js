@@ -34,8 +34,8 @@ export const siteConfig = {
       tags: ["实用工具", "文件分析", "PikPak"],
       status: "演示中",
       statusTone: "cool",
-      url: "", // 填写 Cloudflare 部署后的地址，例如 "https://pikpak.example.com" 或 "/pikpak/"
-      linkType: "internal", // 外部/子域名用 "external"；同域名子路径用 "internal"
+      url: "https://pikpak.duck91.com",
+      linkType: "external", // 外部/子域名用 "external"；同域名子路径用 "internal"
       visual: "analyzer",
       visualLabel: "PikPak 文件大小分析器的封面占位图",
     },
