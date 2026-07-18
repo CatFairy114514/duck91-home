@@ -21,8 +21,8 @@ export const siteConfig = {
       tags: ["小游戏", "Web", "实验作品"],
       status: "演示中",
       statusTone: "warm",
-      url: "", // 填写 Cloudflare 部署后的地址，例如 "https://game.example.com" 或 "/game/"
-      linkType: "internal", // 外部/子域名用 "external"；同域名子路径用 "internal"
+      url: "https://game.duck91.com",
+      linkType: "external", // 外部/子域名用 "external"；同域名子路径用 "internal"
       visual: "game",
       visualLabel: "网页小游戏的封面占位图",
     },
