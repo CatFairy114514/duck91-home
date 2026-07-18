@@ -23,10 +23,31 @@ export const siteConfig = {
       statusTone: "cool",
       url: "https://game.duck91.com",
       linkType: "external", // 外部/子域名用 "external"；同域名子路径用 "internal"
+      ctaLabel: "进入游戏",
       coverImage: "./assets/game-cover.png",
       coverAlt: "雷雨中的九头蛇与持剑冒险者对峙的网页小游戏封面",
       visual: "game",
       visualLabel: "网页小游戏的封面占位图",
+      // 配置 details 后，项目卡片会获得桌面端悬停详情与移动端手动展开能力。
+      details: {
+        title: "九头蛇游戏",
+        subtitle: "THE HYDRA GAME",
+        tagline: "每一次挥剑，都让它变得更强",
+        helper: "挑战无限再生的古老诅咒",
+        description:
+          "一场基于树形结构与递归规则的逻辑小游戏。玩家每次只能砍掉末端蛇头，而九头蛇会根据当前砍头次数复制新的分支。看似不断增长的九头蛇，最终能否被完全消灭？",
+        listLabel: "游戏规则摘要",
+        rules: [
+          "每次只能砍掉最末端的一颗头",
+          "被砍蛇头的祖父节点会复制对应分支",
+          "第几次砍头，就额外复制多少份",
+          "直接连接身体的蛇头被砍后不会再生",
+          "游戏目标是消灭全部蛇头",
+        ],
+        tags: ["逻辑游戏", "递归结构", "数学游戏", "Hydra"],
+        expandLabel: "查看详情",
+        collapseLabel: "收起详情",
+      },
     },
     {
       visible: true,
@@ -38,8 +59,27 @@ export const siteConfig = {
       statusTone: "cool",
       url: "https://pikpak.duck91.com",
       linkType: "external", // 外部/子域名用 "external"；同域名子路径用 "internal"
+      ctaLabel: "打开分析器",
       visual: "analyzer",
       visualLabel: "PikPak 文件大小分析器的封面占位图",
+      details: {
+        title: "PikPak 文件大小分析器",
+        subtitle: "PIKPAK SIZE ANALYZER",
+        tagline: "让文件占用一目了然",
+        helper: "从体积分布中定位整理方向",
+        description:
+          "一个用于整理与分析文件体积的实用工具演示，帮助更快识别占用空间较大的内容与分布情况，让清理与归档更有依据。",
+        listLabel: "功能摘要",
+        rules: [
+          "快速定位占用空间较大的文件与目录",
+          "从体积分布中理解当前空间使用情况",
+          "结合文件类型辅助判断整理方向",
+          "适合在归档或清理前进行一次快速盘点",
+        ],
+        tags: ["实用工具", "文件分析", "PikPak", "演示站"],
+        expandLabel: "查看详情",
+        collapseLabel: "收起详情",
+      },
     },
   ],
 

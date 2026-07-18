@@ -49,11 +49,24 @@ function makeProjectAction(project) {
 }
 
 function makeProjectVisual(project, index) {
+  const details = project.details;
+  const coverDetails = details
+    ? `
+        <div class="project-cover-shade" aria-hidden="true"></div>
+        <div class="project-cover-copy" aria-hidden="true">
+          <p class="project-cover-subtitle">${escapeHtml(details.subtitle || "")}</p>
+          <p class="project-cover-title">${escapeHtml(details.title || project.name)}</p>
+          <p class="project-cover-tagline">${escapeHtml(details.tagline || "")}</p>
+          <p class="project-cover-helper">${escapeHtml(details.helper || "")}</p>
+        </div>`
+    : "";
+
   if (isUsableUrl(project.coverImage)) {
     const coverAlt = project.coverAlt || project.visualLabel || `${project.name} 封面`;
     return `
       <div class="project-visual has-cover">
         <img class="project-cover" src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(coverAlt)}" loading="lazy" decoding="async">
+        ${coverDetails}
       </div>`;
   }
 
@@ -63,7 +76,41 @@ function makeProjectVisual(project, index) {
       <span class="visual-kicker" aria-hidden="true">PROJECT 0${index + 1}</span>
       <div class="visual-symbol" aria-hidden="true">${project.visual === "game" ? "◇" : "↗"}</div>
       <div class="visual-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      ${coverDetails}
     </div>`;
+}
+
+function makeProjectDetails(project, index) {
+  if (!project.details) return "";
+
+  const { details } = project;
+  const detailId = `project-details-${index + 1}`;
+  return `
+    <section class="project-details" id="${detailId}" aria-label="${escapeHtml(details.title || project.name)}详情">
+      <p class="project-details-subtitle">${escapeHtml(details.subtitle || "")}</p>
+      <p class="project-details-title">${escapeHtml(details.title || project.name)}</p>
+      <p class="project-details-tagline">${escapeHtml(details.tagline || "")}</p>
+      <p class="project-details-description">${escapeHtml(details.description || "")}</p>
+      <ul class="project-rule-list" aria-label="${escapeHtml(details.listLabel || "项目摘要")}">
+        ${(details.rules || []).map((rule) => `<li>${escapeHtml(rule)}</li>`).join("")}
+      </ul>
+      <ul class="project-detail-tags" aria-label="项目详情标签">
+        ${(details.tags || []).map((tag) => `<li>${escapeHtml(tag)}</li>`).join("")}
+      </ul>
+    </section>`;
+}
+
+function makeProjectDetailToggle(project, index) {
+  if (!project.details) return "";
+
+  const detailId = `project-details-${index + 1}`;
+  const expandLabel = project.details.expandLabel || "查看详情";
+  const title = project.details.title || project.name;
+  return `
+    <button class="project-detail-toggle" type="button" data-project-detail-toggle data-detail-title="${escapeHtml(title)}" data-expand-label="${escapeHtml(expandLabel)}" data-collapse-label="${escapeHtml(project.details.collapseLabel || "收起详情")}" aria-expanded="false" aria-controls="${detailId}" aria-label="展开${escapeHtml(title)}详情">
+      <span data-detail-toggle-label>${escapeHtml(expandLabel)}</span>
+      <span class="project-detail-toggle-icon" aria-hidden="true">↓</span>
+    </button>`;
 }
 
 function renderProjects() {
@@ -73,22 +120,45 @@ function renderProjects() {
   projectList.innerHTML = projects
     .map(
       (project, index) => `
-        <article class="project-card reveal" style="--card-delay: ${index * 90}ms">
+        <article class="project-card${project.details ? " project-card-has-details" : ""} reveal"${project.details ? ' tabindex="0"' : ""} style="--card-delay: ${index * 90}ms">
           ${makeProjectVisual(project, index)}
           <div class="project-body">
             <div class="project-meta">
               <span class="status status-${escapeHtml(project.statusTone || "neutral")}">${escapeHtml(project.status)}</span>
             </div>
-            <h3>${escapeHtml(project.name)}</h3>
-            <p>${escapeHtml(project.description)}</p>
-            <ul class="tag-list" aria-label="项目标签">
-              ${project.tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("")}
-            </ul>
-            ${makeProjectAction(project)}
+            <div class="project-default-content">
+              <h3>${escapeHtml(project.name)}</h3>
+              <p>${escapeHtml(project.description)}</p>
+              <ul class="tag-list" aria-label="项目标签">
+                ${project.tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("")}
+              </ul>
+            </div>
+            ${makeProjectDetails(project, index)}
+            <div class="project-actions">
+              ${makeProjectDetailToggle(project, index)}
+              ${makeProjectAction(project)}
+            </div>
           </div>
         </article>`,
     )
     .join("");
+}
+
+function setupProjectDetailToggles() {
+  document.querySelectorAll("[data-project-detail-toggle]").forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const card = toggle.closest(".project-card-has-details");
+      if (!card) return;
+
+      const isExpanded = card.classList.toggle("is-expanded");
+      const title = toggle.dataset.detailTitle || "项目";
+      const label = toggle.querySelector("[data-detail-toggle-label]");
+
+      toggle.setAttribute("aria-expanded", String(isExpanded));
+      toggle.setAttribute("aria-label", `${isExpanded ? "收起" : "展开"}${title}详情`);
+      label.textContent = isExpanded ? toggle.dataset.collapseLabel : toggle.dataset.expandLabel;
+    });
+  });
 }
 
 function renderAboutLinks() {
@@ -164,6 +234,7 @@ function setupThemeToggle() {
 function init() {
   renderSiteText();
   renderProjects();
+  setupProjectDetailToggles();
   renderAboutLinks();
   renderContacts();
   document.querySelector("#year").textContent = new Date().getFullYear();
