@@ -1,0 +1,5 @@
+/site.config.js
+  Cache-Control: no-cache
+
+/script.js
+  Cache-Control: no-cache
