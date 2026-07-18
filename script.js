@@ -51,6 +51,8 @@ function makeProjectAction(action, options = {}) {
 
 function makeProjectVisual(project, index) {
   const details = project.details;
+  const status = `
+    <span class="status status-${escapeHtml(project.statusTone || "neutral")} project-visual-status">${escapeHtml(project.status)}</span>`;
   const coverDetails = details
     ? `
         <div class="project-cover-shade" aria-hidden="true"></div>
@@ -68,6 +70,7 @@ function makeProjectVisual(project, index) {
       <div class="project-visual has-cover">
         <img class="project-cover" src="${escapeHtml(project.coverImage)}" alt="${escapeHtml(coverAlt)}" loading="lazy" decoding="async">
         ${coverDetails}
+        ${status}
       </div>`;
   }
 
@@ -78,6 +81,7 @@ function makeProjectVisual(project, index) {
       <div class="visual-symbol" aria-hidden="true">${project.visual === "game" ? "◇" : "↗"}</div>
       <div class="visual-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       ${coverDetails}
+      ${status}
     </div>`;
 }
 
@@ -121,9 +125,6 @@ function renderProjects() {
         <article class="project-card${project.details ? " project-card-has-details" : ""}${project.secondaryAction ? " project-card-has-secondary-action" : ""} reveal"${project.details ? ' tabindex="0"' : ""} style="--card-delay: ${index * 90}ms">
           ${makeProjectVisual(project, index)}
           <div class="project-body">
-            <div class="project-meta">
-              <span class="status status-${escapeHtml(project.statusTone || "neutral")}">${escapeHtml(project.status)}</span>
-            </div>
             <div class="project-default-content">
               <h3>${escapeHtml(project.name)}</h3>
               <p>${escapeHtml(project.description)}</p>
