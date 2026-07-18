@@ -90,7 +90,7 @@ button { font: inherit; }
 }
 .nav-wrap { display: flex; min-height: 72px; align-items: center; gap: 28px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; margin-right: auto; font-size: 0.96rem; font-weight: 760; letter-spacing: -0.025em; }
-.brand-mark { display: grid; width: 29px; height: 29px; place-items: center; border-radius: 8px; background: var(--text); color: var(--bg); font-size: 0.66rem; letter-spacing: -0.04em; }
+.brand-mark { display: block; width: 32px; height: 32px; flex: 0 0 auto; border-radius: 9px; object-fit: cover; object-position: center; box-shadow: 0 3px 10px color-mix(in srgb, #000 24%, transparent); }
 .nav-links { display: flex; gap: 24px; color: var(--text-soft); font-size: 0.88rem; }
 .nav-links a { transition: color 180ms ease; }
 .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); }
@@ -174,7 +174,7 @@ h3 { font-size: 1.45rem; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 @media (max-width: 760px) {
-  .container { width: min(100% - 36px, 620px); }.section { padding: 75px 0; }.nav-wrap { min-height: 64px; gap: 14px; }.brand { font-size: .85rem; }.brand-mark { width: 27px; height: 27px; }.nav-links { display: none; }.theme-toggle { min-width: 42px; padding: 8px 10px; }.theme-label { display: none; }
+  .container { width: min(100% - 36px, 620px); }.section { padding: 75px 0; }.nav-wrap { min-height: 64px; gap: 14px; }.brand { font-size: .85rem; }.brand-mark { width: 28px; height: 28px; border-radius: 8px; }.nav-links { display: none; }.theme-toggle { min-width: 42px; padding: 8px 10px; }.theme-label { display: none; }
   .hero { min-height: auto; padding-top: 81px; padding-bottom: 80px; }.hero-grid { grid-template-columns: 1fr; gap: 42px; }.hero-aside { min-height: 205px; }.hero-aside p { margin: 27px 0 19px; }
   .section-heading { display: block; margin-bottom: 30px; }.section-heading > p { margin-top: 18px; }.project-grid { grid-template-columns: 1fr; }.project-body { min-height: 282px; }.project-visual { min-height: 198px; }.about-card { grid-template-columns: 1fr; gap: 24px; }.avatar { width: 70px; height: 70px; font-size: 1.9rem; }.contact-list { grid-template-columns: 1fr; }.contact-item, .contact-item:first-child { min-height: 92px; border-left: 1px solid var(--line); }.footer-wrap { display: block; }.footer-wrap p + p { margin-top: 5px; }
 }
